@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulateur d'Accessibilité des Couleurs</title>
+    
+    <!-- Police Lexend -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Toolbar d'accessibilité Faites Mieux -->
+    <link rel="stylesheet" href="https://alixb-accessible.github.io/faites-mieux-toolbar/faites-mieux.css">
+    <script src="https://alixb-accessible.github.io/faites-mieux-toolbar/faites-mieux.js" defer></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    <div class="container" id="mainSimulator">
+        <header class="header">
+            <h1>Simulateur d'Accessibilité des Couleurs</h1>
+            <p>Testez vos couleurs pour tous les types de vision et vérifiez la conformité WCAG</p>
+        </header>
+
+        <main class="main-content" id="main-content">
+            <div class="color-palette" id="colorPalette">
+                <!-- Les couleurs seront générées par JavaScript -->
+            </div>
+
+            <div class="button-group">
+                <button id="contrastPageBtn" class="action-button" style="
+                    background: linear-gradient(135deg, #e74c3c, #c0392b);
+                    color: white;
+                " aria-label="Accéder à la page de test des contrastes de texte">
+                    Tester les Contrastes de Texte
+                </button>
+                
+                <button id="digitalAccessibilityBtn" class="action-button" style="
+                    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+                    color: white;
+                " aria-label="Accéder aux informations sur les normes d'accessibilité numérique">
+                    Normes d'Accessibilité Numérique
+                </button>
+                
+                <button id="webAccessibilityBtn" class="action-button" style="
+                    background: linear-gradient(135deg, #3498db, #2980b9);
+                    color: white;
+                " aria-label="Accéder au guide d'accessibilité des sites et blogs">
+                    Accessibilité des Sites et des Blogs
+                </button>
+                
+                <button id="aboutBtn" class="action-button" style="
+                    background: linear-gradient(135deg, #f39c12, #e67e22);
+                    color: white;
+                " aria-label="À Propos">
+                    À Propos
+                </button>
+            </div>
+
+            <section class="vision-simulator" aria-labelledby="vision-simulator-title">
+                <h2 id="vision-simulator-title" style="text-align: center; margin-bottom: 20px; color: #2c3e50;">Simulation des Différents Types de Vision</h2>
+                <div class="vision-controls">
+                    <button class="vision-btn active" data-vision="normal">Vision Standard</button>
+                    <button class="vision-btn" data-vision="deuteranopia">Deutéranopie</button>
+                    <button class="vision-btn" data-vision="protanopia">Protanopie</button>
+                    <button class="vision-btn" data-vision="tritanopia">Tritanopie</button>
+                    <button class="vision-btn" data-vision="achromatopsia">Achromatopsie</button>
+                    <button class="vision-btn" data-vision="monochromacy">Monochromatie</button>
+                    <button class="vision-btn" data-vision="photophobia">Photophobie</button>
+                    <button class="vision-btn" data-vision="scotopic">Vision Scotopique</button>
+                    <button class="vision-btn" data-vision="tunnel">Vision Tunnel</button>
+                    <button class="vision-btn" data-vision="peripheral">Perte Périphérique</button>
+                    <button class="vision-btn" data-vision="central">Scotome Central</button>
+                    <button class="vision-btn" data-vision="hemianopia">Hémianopsie</button>
+                    <button class="vision-btn" data-vision="prosopagnosia">Prosopagnosie</button>
+                </div>
+            </section>
+
+            <section class="wcag-compliance" aria-labelledby="wcag-title">
+                <h2 id="wcag-title" style="color: #2c3e50; margin-bottom: 15px;">Conformité WCAG</h2>
+                <p style="color: #5a6c7d; margin-bottom: 20px;">Contraste des couleurs sur fond blanc</p>
+                <div class="compliance-grid" id="complianceGrid">
+                    <!-- Les résultats de conformité seront générés par JavaScript -->
+                </div>
+            </section>
+
+            <section class="suggestions" aria-labelledby="suggestions-title">
+                <h2 id="suggestions-title" style="color: #2c3e50; margin-bottom: 15px;">Suggestions d'Amélioration</h2>
+                <div id="suggestionsContainer">
+                    <!-- Les suggestions seront générées par JavaScript -->
+                </div>
+            </section>
+
+            <section style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: 15px; padding: 25px; margin-top: 30px;" aria-labelledby="social-media-title">
+                <h2 id="social-media-title" style="color: #1565c0; margin-bottom: 20px; text-align: center;">Accessibilité sur les Réseaux Sociaux</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="background: rgba(255,255,255,0.8); padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #1565c0; margin-bottom: 15px;">Bonnes Pratiques</h4>
+                        <ul style="color: #1565c0; line-height: 1.8;">
+                            <li><strong>Alt text</strong> : Décrivez précisément vos images (descriptions détaillées autorisées)</li>
+                            <li><strong>Hashtags</strong> : #CamelCase pour la lisibilité</li>
+                            <li><strong>Émojis</strong> : Avec modération (lecteurs d'écran)</li>
+                            <li><strong>Vidéos</strong> : Sous-titres et descriptions audio complémentaire si nécessaire</li>
+                            <li><strong>Couleurs</strong> : Contrastes suffisants</li>
+                        </ul>
+                        <p style="margin-top: 15px; padding: 10px; background: rgba(255,255,255,0.6); border-radius: 8px; font-style: italic; color: #0d47a1;">
+                            <strong>Outil déjà disponible !</strong> <a href="https://alixb-accessible.github.io/Outil-de-descriptions-d-images-accessibles-/" target="_blank" rel="noopener noreferrer" style="color: #0d47a1; text-decoration: underline;">Générateur de descriptions d'images accessibles</a> pour les réseaux sociaux.
+                        </p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #1565c0; margin-bottom: 15px;">À Éviter</h4>
+                        <ul style="color: #1565c0; line-height: 1.8;">
+                            <li>Images sans description</li>
+                            <li>Texte intégré dans les images sans alternative</li>
+                            <li>Vidéos sans sous-titres ni descriptions audio</li>
+                            <li>Couleurs comme seul moyen d'information</li>
+                            <li>Liens sans contexte ("cliquez ici")</li>
+                            <li>CAPTCHA visuels sans alternative audio</li>
+                        </ul>
+                    </div>
+                </div>
+                <p style="color: #0d47a1; font-style: italic; margin-top: 20px; text-align: center;">
+                    Les couleurs accessibles + le texte alternatif = une communication vraiment inclusive !<br>
+                    <small>(Et n'oubliez pas le Facile à Lire et à Comprendre - FALC - pour vos textes !)</small><br>
+                    <small>Rappel : respecter les normes de couleurs ne dispense pas de respecter l'accessibilité sur les réseaux sociaux.</small>
+                </p>
+            </section>
+            <section class="info-section" aria-labelledby="info-title">
+                <h2 id="info-title" style="color: #2c3e50; margin-bottom: 15px;">Informations sur les Différents Types de Vision</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Deutéranopie</h4>
+                        <p>Difficulté à distinguer le rouge et le vert. Affecte environ 5% des hommes et 0.4% des femmes. Les couleurs rouges apparaissent plus ternes.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Protanopie</h4>
+                        <p>Absence de récepteurs pour le rouge. Moins fréquente que la deutéranopie. Les rouges apparaissent très sombres ou noirs.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Tritanopie</h4>
+                        <p>Difficulté avec le bleu et le jaune. Très rare (moins de 1% de la population). Les bleus apparaissent verts et les jaunes roses.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Achromatopsie</h4>
+                        <p>Absence totale de vision des couleurs. Très rare (1 sur 30 000). La personne voit uniquement en nuances de gris.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Monochromatie</h4>
+                        <p>Vision limitée à une seule couleur. Peut être bleue, verte ou rouge selon le type de cônes fonctionnels.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Photophobie</h4>
+                        <p>Hypersensibilité à la lumière. Les couleurs vives et contrastées peuvent causer de l'inconfort ou des douleurs.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Vision Scotopique</h4>
+                        <p>Vision adaptée à la faible luminosité. Les couleurs apparaissent délavées, principalement en nuances de bleu-vert.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Vision Tunnel</h4>
+                        <p>Perte de la vision périphérique. Le champ visuel est réduit à un cercle central, comme regarder à travers un tunnel.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Perte Périphérique</h4>
+                        <p>Perte de la vision centrale avec conservation de la vision périphérique. Difficulté à voir les détails au centre.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Scotome Central</h4>
+                        <p>Tache aveugle au centre du champ visuel. Souvent causée par la dégénérescence maculaire liée à l'âge.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Hémianopsie</h4>
+                        <p>Perte de la moitié du champ visuel (droite ou gauche). Souvent causée par un AVC ou une lésion cérébrale.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Prosopagnosie</h4>
+                        <p>Difficulté à reconnaître les visages. Affecte la perception des détails faciaux et peut rendre difficile l'identification des personnes dans les images.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Page de test des contrastes de texte -->
+    <div id="contrastPage" class="container" style="display: none;">
+        <header class="header">
+            <h1>Test des Contrastes de Texte</h1>
+            <p>Découvrez l'importance du contraste entre le texte et l'arrière-plan</p>
+            <button onclick="showPage('mainSimulator')" style="
+                background: rgba(255,255,255,0.2);
+                color: white;
+                border: 1px solid rgba(255,255,255,0.3);
+                padding: 10px 20px;
+                border-radius: 20px;
+                cursor: pointer;
+                margin-top: 15px;
+                transition: all 0.3s ease;
+            ">
+                ← Retour au simulateur
+            </button>
+        </header>
+        <main class="main-content">
+            <section style="background: #f8f9fa; border-radius: 15px; padding: 25px; margin-bottom: 30px;">
+                <h2 style="color: #2c3e50; margin-bottom: 20px;">Pourquoi le Contraste est-il Important ?</h2>
+                <p style="color: #5a6c7d; line-height: 1.6; margin-bottom: 15px;">
+                    Le contraste entre le texte et l'arrière-plan est essentiel pour l'accessibilité. Un contraste insuffisant peut rendre la lecture difficile ou impossible pour de nombreuses personnes, notamment celles ayant des troubles visuels.
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #27ae60;">
+                        <h4 style="color: #27ae60; margin-bottom: 10px;">Bon Contraste</h4>
+                        <p style="color: #2c3e50;">Facilite la lecture pour tous, y compris les personnes malvoyantes ou dans des conditions d'éclairage difficiles.</p>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #e74c3c;">
+                        <h4 style="color: #e74c3c; margin-bottom: 10px;">Mauvais Contraste</h4>
+                        <p style="color: #2c3e50;">Rend la lecture fatigante et peut exclure certains utilisateurs de votre contenu.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section style="background: #e8f5e8; border-radius: 15px; padding: 25px; margin-bottom: 30px;">
+                <h2 style="color: #2c3e50; margin-bottom: 20px;">Testeur de Contraste Interactif</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 25px;">
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #2c3e50; margin-bottom: 15px;">Sélecteurs de Couleurs</h4>
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            <div>
+                                <label for="textColorPicker" style="display: block; margin-bottom: 5px; font-weight: bold; color: #2c3e50;">Couleur du texte :</label>
+                                <input type="color" id="textColorPicker" value="#000000" style="width: 60px; height: 40px; border: none; border-radius: 5px; cursor: pointer;">
+                                <span id="textColorValue" style="margin-left: 10px; font-family: monospace; color: #2c3e50;">#000000</span>
+                            </div>
+                            <div>
+                                <label for="bgColorPicker" style="display: block; margin-bottom: 5px; font-weight: bold; color: #2c3e50;">Couleur de fond :</label>
+                                <input type="color" id="bgColorPicker" value="#ffffff" style="width: 60px; height: 40px; border: none; border-radius: 5px; cursor: pointer;">
+                                <span id="bgColorValue" style="margin-left: 10px; font-family: monospace; color: #2c3e50;">#ffffff</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #2c3e50; margin-bottom: 15px;">Aperçu</h4>
+                        <div id="contrastPreview" style="padding: 20px; border-radius: 8px; text-align: center; background: #ffffff; color: #000000; border: 2px solid #ddd; min-height: 80px; display: flex; align-items: center; justify-content: center;">
+                            <div>
+                                <div style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">Texte Normal</div>
+                                <div style="font-size: 1.5rem; font-weight: bold;">Texte Large</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="background: white; padding: 20px; border-radius: 10px; text-align: center;">
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">Résultats du Contraste</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div>
+                            <div style="font-size: 2rem; font-weight: bold; margin-bottom: 5px;" id="contrastRatio">21:1</div>
+                            <div style="color: #666;">Ratio de contraste</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.2rem; font-weight: bold; margin-bottom: 5px;" id="normalTextResult">
+                                <span class="status-badge status-pass">AAA</span>
+                            </div>
+                            <div style="color: #666;">Texte normal (12pt+)</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.2rem; font-weight: bold; margin-bottom: 5px;" id="largeTextResult">
+                                <span class="status-badge status-pass">AAA</span>
+                            </div>
+                            <div style="color: #666;">Texte large (18pt+)</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.2rem; font-weight: bold; margin-bottom: 5px;" id="uiElementResult">
+                                <span class="status-badge status-pass">AAA</span>
+                            </div>
+                            <div style="color: #666;">Éléments d'interface</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="background: rgba(46, 125, 50, 0.1); padding: 15px; border-radius: 10px; margin-top: 20px;">
+                    <h5 style="color: #2e7d32; margin-bottom: 10px;">Couleurs Prédéfinies</h5>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <button onclick="setColors('#000000', '#ffffff')" style="background: #000; color: #fff; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">Noir/Blanc</button>
+                        <button onclick="setColors('#ffffff', '#2c3e50')" style="background: #2c3e50; color: #fff; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">Blanc/Bleu foncé</button>
+                        <button onclick="setColors('#ffffff', '#3498db')" style="background: #3498db; color: #fff; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">Blanc/Bleu</button>
+                        <button onclick="setColors('#ffffff', '#95a5a6')" style="background: #95a5a6; color: #fff; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">Blanc/Gris</button>
+                        <button onclick="setColors('#2c3e50', '#ecf0f1')" style="background: #ecf0f1; color: #2c3e50; border: 1px solid #bdc3c7; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">Foncé/Clair</button>
+                    </div>
+                </div>
+            </section>
+            <section style="background: #f8f9fa; border-radius: 15px; padding: 25px; border: 2px solid #e9ecef;">
+                <h2 style="color: #2c3e50; margin-bottom: 20px;">Conseils Pratiques</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 25px;">
+                    <div>
+                        <h4 style="color: #2c3e50; margin-bottom: 15px;">Pour le Texte Normal</h4>
+                        <ul style="color: #2c3e50; line-height: 1.8;">
+                            <li><strong>Minimum 4.5:1</strong> pour le niveau AA</li>
+                            <li><strong>Minimum 7:1</strong> pour le niveau AAA</li>
+                            <li>Testez avec différents types de vision</li>
+                            <li>Vérifiez sur mobile et desktop</li>
+                            <li>Considérez l'éclairage ambiant</li>
+                            <li>Évitez les polices trop fines</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #2c3e50; margin-bottom: 15px;">Pour le Texte Large (18pt+)</h4>
+                        <ul style="color: #2c3e50; line-height: 1.8;">
+                            <li><strong>Minimum 3:1</strong> pour le niveau AA</li>
+                            <li><strong>Minimum 4.5:1</strong> pour le niveau AAA</li>
+                            <li>Plus tolérant mais toujours important</li>
+                            <li>Attention aux polices fines même en grand</li>
+                            <li>Considérez le poids de la police</li>
+                            <li>Testez la lisibilité à distance</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #2c3e50; margin-bottom: 15px;">Éléments Non-Textuels</h4>
+                        <ul style="color: #2c3e50; line-height: 1.8;">
+                            <li><strong>Minimum 3:1</strong> pour les composants d'interface</li>
+                            <li>Icônes et boutons inclus</li>
+                            <li>Bordures et séparateurs</li>
+                            <li>États de focus visibles</li>
+                            <li>Indicateurs d'état (erreur, succès)</li>
+                            <li>Graphiques et diagrammes</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #2c3e50; margin-bottom: 15px;">Cas Particuliers</h4>
+                        <ul style="color: #2c3e50; line-height: 1.8;">
+                            <li><strong>Logos</strong> : exemptés des règles de contraste</li>
+                            <li><strong>Texte décoratif</strong> : pas de contrainte</li>
+                            <li><strong>Texte inactif</strong> : peut avoir un contraste réduit</li>
+                            <li><strong>Images de texte</strong> : à éviter si possible</li>
+                            <li><strong>Texte sur image</strong> : attention aux zones variables</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 10px; border: 2px solid #2c3e50;">
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">Méthodes de Test</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div>
+                            <h5 style="color: #2c3e50; margin-bottom: 10px;">Outils Automatiques</h5>
+                            <ul style="color: #2c3e50; line-height: 1.6; font-size: 0.9rem;">
+                                <li><a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">WebAIM Contrast Checker</a></li>
+                                <li><a href="https://www.tpgi.com/color-contrast-checker/" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">Colour Contrast Analyser (CCA)</a></li>
+                                <li><a href="https://www.deque.com/axe/browser-extensions/" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">Extensions navigateur</a></li>
+                                <li><a href="https://www.figma.com/community/plugin/732603254453395948/Stark" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">Outils de design (Figma, Sketch)</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 style="color: #2c3e50; margin-bottom: 10px;">Tests Manuels</h5>
+                            <ul style="color: #2c3e50; line-height: 1.6; font-size: 0.9rem;">
+                                <li>Impression en noir et blanc</li>
+                                <li>Simulation de daltonisme</li>
+                                <li>Test en conditions réelles</li>
+                                <li>Retours d'utilisateurs</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 style="color: #2c3e50; margin-bottom: 10px;">Bonnes Pratiques</h5>
+                            <ul style="color: #2c3e50; line-height: 1.6; font-size: 0.9rem;">
+                                <li>Tester dès la conception</li>
+                                <li>Documenter les choix</li>
+                                <li>Former les équipes</li>
+                                <li>Intégrer dans le processus</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Page des normes d'accessibilité numérique -->
+    <div id="digitalAccessibilityPage" class="container" style="display: none;">
+        <header class="header">
+            <h1>Normes d'Accessibilité Numérique</h1>
+            <p>Comprendre les obligations légales et les bonnes pratiques</p>
+            <button onclick="showPage('mainSimulator')" style="
+                background: rgba(255,255,255,0.2);
+                color: white;
+                border: 1px solid rgba(255,255,255,0.3);
+                padding: 10px 20px;
+                border-radius: 20px;
+                cursor: pointer;
+                margin-top: 15px;
+                transition: all 0.3s ease;
+            ">
+                ← Retour au simulateur
+            </button>
+        </header>
+        <main class="main-content">
+            <section style="background: #e8f4fd; border-radius: 15px; padding: 25px; margin-bottom: 30px;">
+                <h2 style="color: #2c3e50; margin-bottom: 20px;">Les WCAG (Web Content Accessibility Guidelines)</h2>
+                <p style="color: #5a6c7d; line-height: 1.6; margin-bottom: 20px;">
+                    Les WCAG sont les standards internationaux pour l'accessibilité web, développés par le W3C. Ils définissent comment rendre le contenu web accessible aux personnes en situation de handicap.
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #3498db;">
+                        <h4 style="color: #3498db; margin-bottom: 15px;">Niveau A (Minimum)</h4>
+                        <p style="color: #2c3e50; line-height: 1.6; margin-bottom: 15px;">
+                            Critères de base pour l'accessibilité. Élimine les principales barrières d'accès au contenu.
+                        </p>
+                        <ul style="color: #2c3e50; line-height: 1.6;">
+                            <li>Images avec texte alternatif</li>
+                            <li>Contenu accessible au clavier</li>
+                            <li>Pas de contenu clignotant dangereux</li>
+                            <li>Structure logique des titres</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #f39c12;">
+                        <h4 style="color: #f39c12; margin-bottom: 15px;">Niveau AA (Standard)</h4>
+                        <p style="color: #2c3e50; line-height: 1.6; margin-bottom: 15px;">
+                            Niveau recommandé et souvent requis légalement. Améliore significativement l'accessibilité.
+                        </p>
+                        <ul style="color: #2c3e50; line-height: 1.6;">
+                            <li>Contraste minimum 4.5:1 (texte normal)</li>
+                            <li>Contraste minimum 3:1 (texte large)</li>
+                            <li>Redimensionnement jusqu'à 200%</li>
+                            <li>Sous-titres pour les vidéos</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #27ae60;">
+                        <h4 style="color: #27ae60; margin-bottom: 15px;">Niveau AAA (Excellence)</h4>
+                        <p style="color: #2c3e50; line-height: 1.6; margin-bottom: 15px;">
+                            Niveau le plus élevé. Recommandé pour les contenus spécialisés ou critiques.
+                        </p>
+                        <ul style="color: #2c3e50; line-height: 1.6;">
+                            <li>Contraste minimum 7:1 (texte normal)</li>
+                            <li>Contraste minimum 4.5:1 (texte large)</li>
+                            <li>Pas d'images de texte</li>
+                            <li>Aide contextuelle disponible</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section style="background: #f8f9fa; border-radius: 15px; padding: 25px; margin-bottom: 30px;">
+                <h2 style="color: #2c3e50; margin-bottom: 20px;">Obligations Légales en France</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 25px;">
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #e74c3c; margin-bottom: 15px;">Secteur Public</h4>
+                        <ul style="color: #2c3e50; line-height: 1.8;">
+                            <li>Obligation légale depuis 2012 (loi du 11 février 2005)</li>
+                            <li>RGAA 4.1 (Référentiel Général d'Amélioration de l'Accessibilité)</li>
+                            <li>Niveau AA requis (conforme aux WCAG 2.1)</li>
+                            <li>Déclaration d'accessibilité obligatoire</li>
+                            <li>Schéma pluriannuel de mise en accessibilité</li>
+                            <li>Sanctions : jusqu'à 20 000 euros par an de retard</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #9b59b6; margin-bottom: 15px;">Secteur Privé</h4>
+                        <ul style="color: #2c3e50; line-height: 1.8;">
+                            <li>Obligation depuis septembre 2020 (Directive européenne)</li>
+                            <li>Entreprises de plus de 250M euros de CA annuel</li>
+                            <li>Services de communication publique en ligne</li>
+                            <li>Applications mobiles incluses</li>
+                            <li>Déclaration d'accessibilité obligatoire</li>
+                            <li>Amendes : jusqu'à 25 000 euros par manquement</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="background: #fff3cd; padding: 20px; border-radius: 10px; border-left: 4px solid #ffc107;">
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">Cadre Juridique Complet</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div>
+                            <h5 style="color: #2c3e50; margin-bottom: 10px;">Textes de Référence</h5>
+                            <ul style="color: #2c3e50; line-height: 1.6; font-size: 0.9rem;">
+                                <li><a href="https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000809647/" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">Loi n° 2005-102 du 11 février 2005</a></li>
+                                <li><a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000038811937" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">Décret n° 2019-768 du 24 juillet 2019</a></li>
+                                <li><a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32016L2102" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">Directive européenne 2016/2102</a></li>
+                                <li><a href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">Norme européenne EN 301 549</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 style="color: #2c3e50; margin-bottom: 10px;">Organismes Concernés</h5>
+                            <ul style="color: #2c3e50; line-height: 1.6; font-size: 0.9rem;">
+                                <li>État et collectivités territoriales</li>
+                                <li>Établissements publics</li>
+                                <li>Grandes entreprises privées</li>
+                                <li>Délégataires de service public</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 style="color: #2c3e50; margin-bottom: 10px;">Contrôles et Sanctions</h5>
+                            <ul style="color: #2c3e50; line-height: 1.6; font-size: 0.9rem;">
+                                <li>ARCOM (ex-CSA) pour le contrôle</li>
+                                <li>Défenseur des droits</li>
+                                <li>Sanctions administratives</li>
+                                <li>Mise en demeure publique</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section style="background: #e8f5e8; border-radius: 15px; padding: 25px; margin-bottom: 30px;">
+                <h2 style="color: #2c3e50; margin-bottom: 20px;">Les 4 Principes WCAG</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 15px;" aria-hidden="true">👁</div>
+                        <h4 style="color: #27ae60; margin-bottom: 10px;">Perceptible</h4>
+                        <p style="color: #2c3e50;">L'information doit être présentée de façon à être perçue par tous les utilisateurs.</p>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 15px;" aria-hidden="true">⚡</div>
+                        <h4 style="color: #3498db; margin-bottom: 10px;">Utilisable</h4>
+                        <p style="color: #2c3e50;">L'interface doit être utilisable par tous, quels que soient leurs moyens d'interaction.</p>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 15px;" aria-hidden="true">🧠</div>
+                        <h4 style="color: #f39c12; margin-bottom: 10px;">Compréhensible</h4>
+                        <p style="color: #2c3e50;">L'information et l'interface doivent être compréhensibles par tous.</p>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 15px;" aria-hidden="true">🔧</div>
+                        <h4 style="color: #e74c3c; margin-bottom: 10px;">Robuste</h4>
+                        <p style="color: #2c3e50;">Le contenu doit être compatible avec les technologies d'assistance.</p>
+                    </div>
+                </div>
+            </section>
+            <section style="background: #f8f9fa; border-radius: 15px; padding: 25px; border: 2px solid #e9ecef;">
+                <h2 style="color: #2c3e50; margin-bottom: 20px;">Ressources Utiles</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 25px;">
+                    <div>
+                        <h4 style="color: #2c3e50; margin-bottom: 15px;">Documentation Officielle</h4>
+                        <ul style="color: #2c3e50; line-height: 1.8;">
+                            <li><strong><a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">WCAG 2.1</a></strong> (W3C) - Standard international</li>
+                            <li><strong><a href="https://www.numerique.gouv.fr/publications/rgaa-accessibilite/" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">RGAA 4.1</a></strong> (DINUM) - Référentiel français</li>
+                            <li><strong><a href="https://www.accede-web.com/" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">Guide AcceDe Web</a></strong> - Ressources pratiques</li>
+                            <li><strong><a href="https://checklists.opquast.com/fr/" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">Référentiel Opquast</a></strong> - Qualité web</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #2c3e50; margin-bottom: 15px;">Outils de Test</h4>
+                        <ul style="color: #2c3e50; line-height: 1.8;">
+                            <li><strong><a href="https://wave.webaim.org/" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">WAVE</a></strong> - Évaluation automatique</li>
+                            <li><strong><a href="https://www.deque.com/axe/devtools/" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">axe DevTools</a></strong> - Extension navigateur</li>
+                            <li><strong><a href="https://developers.google.com/web/tools/lighthouse" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">Lighthouse</a></strong> - Audit Google</li>
+                            <li><strong><a href="https://www.tpgi.com/color-contrast-checker/" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">Color Contrast Analyzers</a></strong></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #2c3e50; margin-bottom: 15px;">Formation et Certification</h4>
+                        <ul style="color: #2c3e50; line-height: 1.8;">
+                            <li><strong><a href="https://www.accessibilityassociation.org/s/certified-professional" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">CPACC</a></strong> - Certified Professional</li>
+                            <li><strong><a href="https://www.accessibilityassociation.org/s/wascertification" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">WAS</a></strong> - Web Accessibility Specialist</li>
+                            <li><strong><a href="https://www.fun-mooc.fr/fr/cours/accessibilite-numerique/" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">MOOC Accessibilité numérique</a></strong> (INRIA)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #2c3e50; margin-bottom: 15px;">Organismes et Communautés</h4>
+                        <ul style="color: #2c3e50; line-height: 1.8;">
+                            <li><strong><a href="https://www.numerique.gouv.fr/" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">DINUM</a></strong> - Direction interministérielle</li>
+                            <li><strong><a href="https://www.arcom.fr/" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">ARCOM</a></strong> - Autorité de régulation</li>
+                            <li><strong><a href="https://www.braillenet.org/" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">Association BrailleNet</a></strong></li>
+                            <li><strong><a href="https://www.w3.org/WAI/" target="_blank" rel="noopener noreferrer" style="color: #2980b9; text-decoration: underline;">W3C WAI</a></strong> - Web Accessibility Initiative</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Page d'accessibilité web -->
+    <div id="webAccessibilityPage" class="container" style="display: none;">
+        <header class="header">
+            <h1>Accessibilité des Sites et des Blogs</h1>
+            <p>Guide pratique pour rendre votre site accessible à tous</p>
+            <button onclick="showPage('mainSimulator')" style="
+                background: rgba(255,255,255,0.2);
+                color: white;
+                border: 1px solid rgba(255,255,255,0.3);
+                padding: 10px 20px;
+                border-radius: 20px;
+                cursor: pointer;
+                margin-top: 15px;
+                transition: all 0.3s ease;
+            ">
+                ← Retour au simulateur
+            </button>
+        </header>
+        <main class="main-content">
+            <section style="background: #e3f2fd; border-radius: 15px; padding: 25px; margin-bottom: 30px;">
+                <h2 style="color: #1976d2; margin-bottom: 20px;">Les Bases de l'Accessibilité Web</h2>
+                <p style="color: #424242; line-height: 1.6; margin-bottom: 20px;">
+                    Rendre votre site accessible, c'est permettre à tous vos visiteurs de naviguer, comprendre et interagir avec votre contenu, quelles que soient leurs capacités.
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #4caf50;">
+                        <h4 style="color: #4caf50; margin-bottom: 15px;">Pourquoi c'est Important</h4>
+                        <ul style="color: #424242; line-height: 1.8;">
+                            <li>15% de la population mondiale a un handicap</li>
+                            <li>Améliore l'expérience pour tous</li>
+                            <li>Meilleur référencement SEO</li>
+                            <li>Conformité légale</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #ff9800;">
+                        <h4 style="color: #ff9800; margin-bottom: 15px;">Impact sur le Design</h4>
+                        <ul style="color: #424242; line-height: 1.8;">
+                            <li>Design plus clair et intuitif</li>
+                            <li>Navigation simplifiée</li>
+                            <li>Contenu mieux structuré</li>
+                            <li>Utilisabilité renforcée</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section style="background: #f3e5f5; border-radius: 15px; padding: 25px; margin-bottom: 30px;">
+                <h2 style="color: #7b1fa2; margin-bottom: 20px;">Checklist Pratique</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #7b1fa2; margin-bottom: 15px;">Images et Médias</h4>
+                        <ul style="color: #424242; line-height: 1.8;">
+                            <li>Texte alternatif (alt) pour toutes les images</li>
+                            <li>Sous-titres pour les vidéos</li>
+                            <li>Transcriptions pour l'audio</li>
+                            <li>Éviter les images de texte</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #7b1fa2; margin-bottom: 15px;">Navigation</h4>
+                        <ul style="color: #424242; line-height: 1.8;">
+                            <li>Navigation au clavier possible</li>
+                            <li>Liens descriptifs (pas "cliquez ici")</li>
+                            <li>Fil d'Ariane clair</li>
+                            <li>Plan du site accessible</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #7b1fa2; margin-bottom: 15px;">Contenu</h4>
+                        <ul style="color: #424242; line-height: 1.8;">
+                            <li>Titres hiérarchisés (H1, H2, H3...)</li>
+                            <li>Langage simple et clair</li>
+                            <li>Listes structurées</li>
+                            <li>Espacement suffisant</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #7b1fa2; margin-bottom: 15px;">Formulaires</h4>
+                        <ul style="color: #424242; line-height: 1.8;">
+                            <li>Labels associés aux champs</li>
+                            <li>Messages d'erreur clairs</li>
+                            <li>Instructions explicites</li>
+                            <li>Validation accessible</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section style="background: #e8f5e8; border-radius: 15px; padding: 25px; margin-bottom: 30px;">
+                <h2 style="color: #2e7d32; margin-bottom: 20px;">Couleurs et Contraste</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #2e7d32; margin-bottom: 15px;">Règles de Base</h4>
+                        <ul style="color: #424242; line-height: 1.8;">
+                            <li>Contraste minimum 4.5:1 (texte normal)</li>
+                            <li>Contraste minimum 3:1 (texte large)</li>
+                            <li>Ne pas utiliser que la couleur pour informer</li>
+                            <li>Tester avec différents types de vision</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #2e7d32; margin-bottom: 15px;">Bonnes Pratiques</h4>
+                        <ul style="color: #424242; line-height: 1.8;">
+                            <li>Utiliser des motifs en plus des couleurs</li>
+                            <li>Éviter les combinaisons rouge/vert</li>
+                            <li>Prévoir un mode sombre</li>
+                            <li>Tester régulièrement vos contrastes</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section style="background: #fff3e0; border-radius: 15px; padding: 25px; margin-bottom: 30px;">
+                <h2 style="color: #ef6c00; margin-bottom: 20px;">Outils Recommandés</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #ef6c00; margin-bottom: 15px;">Test de Contraste</h4>
+                        <ul style="color: #424242; line-height: 1.8;">
+                            <li><a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener noreferrer" style="color: #ef6c00; text-decoration: underline;">WebAIM Contrast Checker</a></li>
+                            <li><a href="https://www.tpgi.com/color-contrast-checker/" target="_blank" rel="noopener noreferrer" style="color: #ef6c00; text-decoration: underline;">Colour Contrast Analyser</a></li>
+                            <li><a href="https://www.figma.com/community/plugin/732603254453395948/Stark" target="_blank" rel="noopener noreferrer" style="color: #ef6c00; text-decoration: underline;">Stark (plugin Figma/Sketch)</a></li>
+                            <li>Ce simulateur</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #ef6c00; margin-bottom: 15px;">Audit Complet</h4>
+                        <ul style="color: #424242; line-height: 1.8;">
+                            <li><a href="https://wave.webaim.org/" target="_blank" rel="noopener noreferrer" style="color: #ef6c00; text-decoration: underline;">WAVE Web Accessibility Evaluator</a></li>
+                            <li><a href="https://www.deque.com/axe/devtools/" target="_blank" rel="noopener noreferrer" style="color: #ef6c00; text-decoration: underline;">axe DevTools</a></li>
+                            <li><a href="https://developers.google.com/web/tools/lighthouse" target="_blank" rel="noopener noreferrer" style="color: #ef6c00; text-decoration: underline;">Lighthouse (Google Chrome)</a></li>
+                            <li><a href="https://pa11y.org/" target="_blank" rel="noopener noreferrer" style="color: #ef6c00; text-decoration: underline;">Pa11y (ligne de commande)</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section style="background: #fce4ec; border-radius: 15px; padding: 25px;">
+                <h2 style="color: #c2185b; margin-bottom: 20px;">Conseils pour Débuter</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #c2185b; margin-bottom: 15px;">Par où Commencer ?</h4>
+                        <ol style="color: #424242; line-height: 1.8;">
+                            <li>Auditez votre site existant</li>
+                            <li>Corrigez les problèmes de contraste</li>
+                            <li>Ajoutez les textes alternatifs</li>
+                            <li>Structurez vos titres</li>
+                            <li>Testez la navigation au clavier</li>
+                        </ol>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #c2185b; margin-bottom: 15px;">Formation de l'Équipe</h4>
+                        <ul style="color: #424242; line-height: 1.8;">
+                            <li>Sensibilisez designers et développeurs</li>
+                            <li>Intégrez l'accessibilité dès la conception</li>
+                            <li>Testez régulièrement</li>
+                            <li>Documentez vos bonnes pratiques</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="background: rgba(194, 24, 91, 0.1); padding: 20px; border-radius: 10px; margin-top: 20px; text-align: center;">
+                    <p style="color: #c2185b; font-weight: bold; margin: 0;">
+                        L'accessibilité n'est pas une contrainte, c'est l'opportunité de rendre le message politique compréhensible par toutes et tous !
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Page À Propos -->
+    <div id="aboutPage" class="container" style="display: none;">
+        <header class="header">
+            <h1>« Faites mieux ! »</h1>
+            <p>© JLM</p>
+            <p style="font-size: 0.8rem; opacity: 0.8; margin-top: 5px;">Créé par TiRacoon</p>
+            <button onclick="showPage('mainSimulator')" style="
+                background: rgba(255,255,255,0.2);
+                color: white;
+                border: 1px solid rgba(255,255,255,0.3);
+                padding: 10px 20px;
+                border-radius: 20px;
+                cursor: pointer;
+                margin-top: 15px;
+                transition: all 0.3s ease;
+            ">
+                ← Retour au simulateur
+            </button>
+        </header>
+        <main class="main-content">
+            <section style="background: #e3f2fd; border-radius: 15px; padding: 25px; margin-bottom: 30px; text-align: center;">
+                <h2 style="color: #1565c0; margin-bottom: 20px;">Simulateur d'Accessibilité des Couleurs</h2>
+                <p style="color: #2c3e50; line-height: 1.6; font-size: 1.1rem; text-align: left;">
+                    Cet outil vous aide à créer des contenus plus inclusifs et accessibles à tous ! 
+                    Il simule différents types de vision pour vous permettre de tester vos couleurs et contrastes.
+                </p>
+                <div style="background: rgba(25, 118, 210, 0.1); padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 4px solid #1976d2;">
+                    <p style="color: #2c3e50; line-height: 1.8; font-size: 1.05rem; margin: 0; font-weight: 500; text-align: left;">
+                        Rappel militant : Respecter les contrastes de couleurs, c'est essentiel, mais ça ne suffit pas ! Une vraie accessibilité, c'est aussi des descriptions d'images détaillées, des textes en Facile à Lire et à Comprendre (FALC), des sous-titres pour les vidéos, une navigation au clavier, et tant d'autres pratiques inclusives. L'Avenir en Commun, comme les visuels, les communiqués, les sites..., c'est pour toutes et tous, sans exception !
+                    </p>
+                    <p style="color: #2c3e50; line-height: 1.6; font-size: 0.95rem; margin-top: 15px; text-align: left;">
+                        Et n'oublions pas : cet outil traite de l'accessibilité numérique, mais l'accessibilité physique est tout aussi cruciale ! Que ce soit pour nos événements militants locaux ou nationaux, le militantisme se doit d'être inclusif.
+                    </p>
+                </div>
+            </section>
+
+            <section style="background: #e8f5e8; border-radius: 15px; padding: 25px; margin-bottom: 30px;">
+                <h2 style="color: #2e7d32; margin-bottom: 20px;">Fonctionnalités</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #4caf50;">
+                        <h4 style="color: #4caf50; margin-bottom: 15px;">Simulation de Vision</h4>
+                        <ul style="color: #424242; line-height: 1.8;">
+                            <li>13 types de vision différents</li>
+                            <li>Daltonisme (deutéranopie, protanopie, tritanopie)</li>
+                            <li>Conditions visuelles spécifiques</li>
+                            <li>Visualisation en temps réel</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #2196f3;">
+                        <h4 style="color: #2196f3; margin-bottom: 15px;">Test de Contraste</h4>
+                        <ul style="color: #424242; line-height: 1.8;">
+                            <li>Calcul automatique des ratios</li>
+                            <li>Conformité WCAG AA/AAA</li>
+                            <li>Évaluation sur fond blanc</li>
+                            <li>Suggestions d'amélioration</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #ff9800;">
+                        <h4 style="color: #ff9800; margin-bottom: 15px;">Ressources Éducatives</h4>
+                        <ul style="color: #424242; line-height: 1.8;">
+                            <li>Guides pratiques</li>
+                            <li>Normes d'accessibilité</li>
+                            <li>Conseils pour les réseaux sociaux</li>
+                            <li>Outils recommandés</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #9c27b0;">
+                        <h4 style="color: #9c27b0; margin-bottom: 15px;">Interface Intuitive</h4>
+                        <ul style="color: #424242; line-height: 1.8;">
+                            <li>Navigation simple</li>
+                            <li>Résultats instantanés</li>
+                            <li>Design responsive</li>
+                            <li>Accessible par défaut</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section style="background: #f3e5f5; border-radius: 15px; padding: 25px; margin-bottom: 30px;">
+                <h2 style="color: #7b1fa2; margin-bottom: 20px;">Objectifs</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #7b1fa2; margin-bottom: 15px;">Sensibilisation</h4>
+                        <p style="color: #424242; line-height: 1.6;">
+                            Faire prendre conscience de l'importance de l'accessibilité des couleurs et de son impact sur l'expérience utilisateur.
+                        </p>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #7b1fa2; margin-bottom: 15px;">Formation</h4>
+                        <p style="color: #424242; line-height: 1.6;">
+                            Accompagner les militants dans l'apprentissage des standards d'accessibilité avec des outils pratiques.
+                        </p>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #7b1fa2; margin-bottom: 15px;">Inclusion</h4>
+                        <p style="color: #424242; line-height: 1.6;">
+                            Promouvoir la création de contenus accessibles à tous, quelles que soient les capacités visuelles.
+                        </p>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #7b1fa2; margin-bottom: 15px;">Simplicité</h4>
+                        <p style="color: #424242; line-height: 1.6;">
+                            Rendre les tests d'accessibilité simples et accessibles, même pour les non-experts.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section style="background: #e3f2fd; border-radius: 15px; padding: 25px; margin-bottom: 30px;">
+                <h2 style="color: #1976d2; margin-bottom: 20px;">Outils Complémentaires</h2>
+                <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                    <p style="color: #424242; line-height: 1.8; margin-bottom: 15px;">
+                        <strong>Outil d'accessibilité pour les réseaux sociaux déjà disponible :</strong><br>
+                        <a href="https://alixb-accessible.github.io/Outil-de-descriptions-d-images-accessibles-/" target="_blank" rel="noopener noreferrer" style="color: #1976d2; text-decoration: underline;">
+                            Générateur de descriptions d'images accessibles
+                        </a>
+                    </p>
+                    <p style="color: #424242; line-height: 1.8; font-style: italic;">
+                        Cet outil vous aide à créer des descriptions d'images optimisées pour l'accessibilité sur les réseaux sociaux !
+                    </p>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.9); border-radius: 12px; border: 2px solid #1976d2; padding: 20px;">
+                    <h3 style="color: #1976d2; margin-bottom: 15px; text-align: center;">Développements Futurs</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div style="background: rgba(25, 118, 210, 0.1); padding: 15px; border-radius: 8px;">
+                            <h4 style="color: #0d47a1; margin-bottom: 10px;">Application Dédiée Accessibilité</h4>
+                            <p style="color: #1976d2; font-size: 0.9rem; line-height: 1.5; margin: 0;">
+                                Une app complète pour l'accessibilité en général : couleurs, contrastes, FALC, réseaux sociaux, outils de vérification...
+                            </p>
+                        </div>
+                        <div style="background: rgba(25, 118, 210, 0.1); padding: 15px; border-radius: 8px;">
+                            <h4 style="color: #0d47a1; margin-bottom: 10px;">Outil Accessibilité IRL</h4>
+                            <p style="color: #1976d2; font-size: 0.9rem; line-height: 1.5; margin: 0;">
+                                Pour les évènements militants locaux et nationaux, prise en compte de tout le monde, tout le temps
+                            </p>
+                        </div>
+                    </div>
+                    <p style="color: #0d47a1; font-style: italic; margin-top: 15px; text-align: center; font-size: 0.9rem;">
+                        L'accessibilité, c'est partout : numérique ET physique ! Rendons le militantisme vraiment inclusif !
+                    </p>
+                </div>
+            </section>
+
+            <section style="background: #ffebee; border-radius: 15px; padding: 25px; text-align: center;">
+                <h2 style="color: #c62828; margin-bottom: 20px;">Contact</h2>
+                <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px;">
+                    <p style="font-weight: bold; margin-bottom: 10px; color: #2c3e50; font-size: 1.1rem;">
+                        Pour toute question, suggestion ou collaboration :
+                    </p>
+                    <p style="font-weight: bold; margin: 0; color: #c62828; font-size: 1.2rem;">
+                        <a href="mailto:Tiracoon_972@proton.me" style="color: #c62828; text-decoration: underline;">Tiracoon_972@proton.me</a>
+                    </p>
+                </div>
+                <p style="color: #c62828; font-style: italic; margin: 0;">
+                    Ensemble, créons un web plus accessible et inclusif !
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+                      
